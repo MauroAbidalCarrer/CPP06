@@ -112,8 +112,16 @@ bool matchInt(std::string arg)
 //methods
 void Convert(std::string arg)
 {
-    if (!matchInt(arg) && !matchChar(arg) && !matchDouble(arg) && !matchFloat(arg))
-        std::cerr << "Error: arg cannot be converted into a literral!" << std::endl;
+    try
+    {
+        if (!matchInt(arg) && !matchChar(arg) && !matchDouble(arg) && !matchFloat(arg))
+            std::cerr << "Error: arg cannot be converted into a literral!" << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 }
 
 int main(int ac, char **av)
